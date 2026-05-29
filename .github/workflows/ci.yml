@@ -1,0 +1,25 @@
+name: CI
+
+on: push
+
+jobs:
+  test-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Instalar dependências
+        run: pip install -r backend/requirements.txt pytest
+      - name: Rodar testes
+        run: pytest backend/
+
+  build-frontend:
+    runs-on: ubuntu_latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Instalar dependências
+        run: cd frontend && npm ci
+      - name: Build
+        run: cd frontend && npm run build
