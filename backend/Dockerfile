@@ -2,9 +2,10 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-COPY backend/*.py ./
-COPY backend/requirements.txt ./
-
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["python", "main.py"]
+COPY *.py ./
+
+EXPOSE 5000
+CMD ["python", "web_app.py"]
