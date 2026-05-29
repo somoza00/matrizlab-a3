@@ -1,0 +1,5 @@
+services:
+  matriz:
+    build: .
+    stdin_open: true
+    tty: true
