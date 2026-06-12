@@ -3,6 +3,7 @@ import io
 import os
 from contextlib import redirect_stdout
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
@@ -10,6 +11,7 @@ import matrix_ops
 import linear_systems
 
 app = Flask(__name__)
+CORS(app)
 
 
 def capture(func, *args):

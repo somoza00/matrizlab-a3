@@ -1,7 +1,9 @@
 import type { Matrix, Vector, ApiResult } from './types'
 
+const BASE = import.meta.env.VITE_API_BASE ?? ''
+
 async function post<T>(path: string, body: object): Promise<ApiResult<T>> {
-  const res = await fetch(path, {
+  const res = await fetch(`${BASE}${path}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
