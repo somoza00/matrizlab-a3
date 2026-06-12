@@ -14,6 +14,11 @@ app = Flask(__name__)
 CORS(app)
 
 
+@app.route("/health")
+def health():
+    return {"ok": True}
+
+
 def capture(func, *args):
     buf = io.StringIO()
     with redirect_stdout(buf):
